@@ -30,16 +30,7 @@ public class VisittasServiceImpl implements VisittasService {
     visittas.setFecha(new Date());
     visittas.setHora(new Date());
     visittasRepository.save(visittas);
-    /*
-
-    Optional<Visittas> userToAdd = visittasRepository.findVisittaByDni(visittas.getDni());
-
-    if (userToAdd.isPresent()) {
-      return VisittasDto.whenUserDniAlreadyExists();
-    }
-    visittasRepository.save(visittas);
-
-     */
+ 
     return VisittasDto.whenRegistratioSucced();
   }
 
@@ -81,21 +72,6 @@ public class VisittasServiceImpl implements VisittasService {
         return VisittasDto.whenAfiliacioDniNotExists();
       }
 
-
-       /*
-      if (visittasToUpdate.isPresent()) {
-
-          visittasToUpdate.get().setLoca(visittas.getLoca() != null ? visittas.getLoca() : visittasToUpdate.get().getLoca());
-          visittasToUpdate.get().setDni(visittas.getDni() != null ? visittas.getDni() : visittasToUpdate.get().getDni());
-          visittasToUpdate.get().setFecha(visittas.getFecha() != null ? visittas.getFecha() : visittasToUpdate.get().getFecha());
-          visittasToUpdate.get().setHora(visittas.getHora() != null ? visittas.getHora() : visittasToUpdate.get().getHora());
-
-        visittasRepository.save(visittasToUpdate.get());
-        return VisittasDto.whenRegistrationSucced();
-      }
-      return VisittasDto.whenError("No esxiste la visita");
-
-        */
     } catch (Exception e) {
       return VisittasDto.whenError("Afiliado en uso use otro");
     }
